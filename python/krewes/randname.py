@@ -7,6 +7,6 @@ KREWES = {
 }
 
 def randname(dictionary):
-  return sum(dictionary.values(),[])[random.randrange(len(sum(dictionary.values(),[])))]
+  return random.choice(sum(dictionary.values(),[]))
   
 print(randname(KREWES))
