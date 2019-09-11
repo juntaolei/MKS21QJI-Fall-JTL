@@ -6,7 +6,7 @@ KREWES = {
   'endymion':['Grace', 'Nahi', 'Derek', 'Jun Tao', 'Connor', 'Jason', 'Tammy', 'Albert', 'Kazi', 'Derek', 'Brandon', 'Kenneth', 'Lauren', 'Biraj', 'Jeff', 'Jackson', 'Taejoon', 'Kevin', 'Jude', 'Sophie', 'Henry', 'Coby', 'Manfred', 'Leia', 'Ahmed', 'Winston']
 }
 
-def randName(dictionary):
+def randname(dictionary):
   return sum(dictionary.values(),[])[random.randrange(len(sum(dictionary.values(),[])))]
   
-print(randName(KREWES))
+print(randname(KREWES))
