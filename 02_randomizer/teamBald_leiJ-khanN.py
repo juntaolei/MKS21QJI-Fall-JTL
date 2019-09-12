@@ -1,3 +1,10 @@
+# Jun Tao Lei
+# SoftDev1 pd9
+# K#04 -- Name Randomizer / Dictionary / Pick a random name from a dictionary.
+# 2019-09-11
+
+
+
 import random
 
 KREWES = {
