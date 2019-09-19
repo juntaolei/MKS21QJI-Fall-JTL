@@ -1,6 +1,11 @@
+# Jun Tao Lei
+# SoftDev1 pd9
+# K#08 -- Serving Flask routes / Flask / Serving Flask routes that directs to static webpages.
+# 2019-09-18
+
 from flask import Flask
 
-app = Flask(__name__)
+app = Flask(__name__, static_url_path='', static_folder='static/')
 
 @app.route('/')
 def index():
@@ -12,7 +17,7 @@ def about():
 
 @app.route('/contact')
 def contact():
-  return app.send_static_file('contact')
+  return app.send_static_file('contact.html')
 
 if __name__ == '__main__':
   app.debug = True
