@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Hello {{ aduck.name }}</title>
+</head>
+<body>
+  {% if aduck %}
+  <h1>Hello, {{ aduck.name }}!</h1>
+  <ul>
+    {% for i in aduck.traits %}
+      <li>{{ i }}</li>
+    {% endfor %}
+  </ul>
+  {% else %}
+  <h1>No aduck found.</h1>
+  {% endif %}
+</body>
+</html> 
