@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="../static/style.css">
+  <title>Occupy the Flask Street</title>
+</head>
+<body>
+  {% if randoccupation %}
+  <div class="job">
+    <h1>Your randomly selected occuptation is: {{ randoccupation }}.</h1>
+  </div>
+  <form action="{{ url_for('updateoccupy') }}" method="POST">
+    <input type="submit" name="Reroll" value="Reroll">
+  </form>
+  <table>
+    <th>
+      <tr>
+        <th>Job Class</th>
+        <th>Percentage</th>
+      </tr>
+      {% for i in jobs %}
+      <tr>
+        <td>{{ i }}</td>
+        <td>{{ jobs[i] }}</td>
+      </tr>
+      {% endfor %}
+    </th>
+  </table>
+  {% else %}
+  <h1>Something has gone wrong. Maybe check the terminal.</h1>
+  {% endif %}
+</body>
+</html>
