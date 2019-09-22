@@ -1,5 +1,58 @@
-h1 {
+body {
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  width: 100vw;
+}
+
+#wrapper {
+  display: grid;
+  padding: 0;
+  margin: 0;
+  height: 100%;
+  width: 100%;
+  grid-template-areas: "left header right"
+                       "left content right"
+                       "left bot right";
+  grid-template-columns: 0.25fr 0.5fr 0.25fr;
+  grid-template-rows: 150px 0.75fr 0.15fr;
+}
+
+#head {
+  grid-area: header;
   text-align: center;
-  border: 1px solid lightblue;
-  border-radius: 2px;
+  font-size: 36px;
+}
+
+#tab {
+  grid-area: content;
+  padding: 0;
+  margin: 0;
+}
+
+#bot {
+  grid-area: bot;
+  text-align: center;
+}
+
+#tab {
+  font-family: Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+#tab td, #tab th {
+  border: 1px solid #ddd;
+  padding: 2px;
+}
+
+#tab th {
+  padding: 2px 1px;
+  text-align: left;
+  background-color: #7585ff;
+  color: white
+}
+
+#tab tr:nth-child(even) {
+  background-color: #f2f2f2;
 }

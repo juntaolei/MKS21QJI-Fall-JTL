@@ -1,40 +1,30 @@
-# Jun Tao Lei
+# Jun Tao Lei (Of TeamKubica With Calvin Chu)
 # SoftDev1 pd9
-# K#10
+# K#10 -- Template Displaying Random Occupations / Dictionary + Flask + Jinja2 / Display a table of occupations and a random occupation.
 # 2019-09-20
 
-from csv import DictReader as d
-from random import choices as c
 from flask import Flask, render_template, redirect, url_for
 
+# User Created
+from randoccupation import getoccupations, randoccupation
+from urlify import urlify
+
+# Instantiate a Flask instance
 app = Flask(__name__)
 
-def getoccupations(file):
-  dictionary = {}
-  for row in d(open(file)):
-    dictionary[row["Job Class"]] = float(row["Percentage"])
-  return dictionary
+# Create a Python dictionary of the occupations in ./static/occupations.csv and added corresponding url.
+urlify_jobs = urlify(getoccupations("./static/occupations.csv"), "https://www.indeed.com/jobs?q=")
 
-def randoccupation(dictionary):
-  tdict = dictionary.copy()
-  tdict.pop("Total")
-  keys, values = zip(*tdict.items())
-  return c(keys, values)[0]
-
-jobs = getoccupations("occupations.csv")
-
+# Redirect / to /occupyflaskst to avoid having to type /occupyflaskst in browser
 @app.route("/")
 def index():
   return redirect(url_for("occupyflaskst"))
 
+# Return a render of the template and given the correct context.
 @app.route("/occupyflaskst")
-def occupyflaskst(randoccupation = randoccupation(jobs), jobs = jobs):
-  return render_template("occupyflaskst.html", randoccupation = randoccupation, jobs = jobs)
-
-@app.route("/occupyflaskst", methods = ["POST"])
-def updateoccupy():
-  return occupyflaskst(randoccupation(jobs))
+def occupyflaskst(jobs = urlify_jobs):
+  randjob = randoccupation(jobs)
+  return render_template("occupyflaskst.html", randoccupation = randjob, jobs = jobs)
 
 if __name__ == "__main__":
-  app.debug = True
-  app.run()
+  app.run(debug = True)

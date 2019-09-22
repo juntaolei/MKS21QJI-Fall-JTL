@@ -1,36 +1,47 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <link rel="stylesheet" href="../static/style.css">
-  <title>Occupy the Flask Street</title>
+  <title>Occupy Ze Flask Street</title>
 </head>
+
 <body>
-  {% if randoccupation %}
-  <div class="job">
-    <h1>Your randomly selected occuptation is: {{ randoccupation }}.</h1>
-  </div>
-  <form action="{{ url_for('updateoccupy') }}" method="POST">
-    <input type="submit" name="Reroll" value="Reroll">
-  </form>
-  <table>
-    <th>
+  <div id="wrapper">
+    {% if randoccupation %}
+    <p id="head">
+      Your randomly selected occuptation is: <strong>{{ randoccupation }}</strong>.
+    </p>
+    <table id="tab">
       <tr>
         <th>Job Class</th>
         <th>Percentage</th>
       </tr>
       {% for i in jobs %}
       <tr>
-        <td>{{ i }}</td>
-        <td>{{ jobs[i] }}</td>
+        <td>
+          {% if i != "Total" %}
+          <a href="{{ jobs[i][1] }}">{{ i }}</a>
+          {% else %}
+          {{ i }}
+          {% endif %}
+        </td>
+        <td>{{ jobs[i][0] }}</td>
       </tr>
       {% endfor %}
-    </th>
-  </table>
-  {% else %}
-  <h1>Something has gone wrong. Maybe check the terminal.</h1>
-  {% endif %}
+    </table>
+    <p id="bot">
+      Hyperlinks for jobs links to a query search of the job in Indeed.com.
+    </p>
+    {% else %}
+    <h1>
+      Something has gone wrong. Maybe check the terminal.
+    </h1>
+    {% endif %}
+  </div>
 </body>
+
 </html>
