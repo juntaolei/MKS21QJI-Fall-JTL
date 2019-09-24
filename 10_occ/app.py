@@ -6,14 +6,14 @@
 from flask import Flask, render_template, redirect, url_for
 
 # User Created
-from randoccupation import getoccupations, randoccupation
-from urlify import urlify
+from utl.urlify import urlify
+from utl.randoccupation import getoccupations, randoccupation
 
 # Instantiate a Flask instance
 app = Flask(__name__)
 
 # Create a Python dictionary of the occupations in ./static/occupations.csv and added corresponding url.
-urlify_jobs = urlify(getoccupations("./static/occupations.csv"), "https://www.indeed.com/jobs?q=")
+urlify_jobs = urlify(getoccupations("./data/occupations.csv"), "https://www.indeed.com/jobs?q=")
 
 # Redirect / to /occupyflaskst to avoid having to type /occupyflaskst in browser
 @app.route("/")
