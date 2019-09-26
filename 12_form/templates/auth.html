@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+    <head>
+      <title>auth</title>
+    </head>
+<body>
+  <ul>
+    <li>Connor Oh</li>
+    <li>Jun Tao Lei</li>
+    <li>team Oh Yeah!!!</li>
+  </ul>
+  {% if user %}
+    <span>User: {{ user }}</span>
+    <span>Getting there from request.args["username"]</span>
+    <span>Hello there, <strong> {{ user }} </strong>. You are in.</span>
+  {% endif %}
+</body>
+</html>
