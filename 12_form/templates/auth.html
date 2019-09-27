@@ -4,15 +4,16 @@
       <title>auth</title>
     </head>
 <body>
-  <ul>
+  <ul style="list-style-type: hiragana;">
     <li>Connor Oh</li>
     <li>Jun Tao Lei</li>
     <li>team Oh Yeah!!!</li>
+		<li>Echo Echo Echo...</li>
   </ul>
   {% if user %}
-    <span>User: {{ user }}</span>
-    <span>Getting there from request.args["username"]</span>
-    <span>Hello there, <strong> {{ user }} </strong>. You are in.</span>
+    <h3>User: {{ user }}</h3>
+    <h3>Getting there from request.args["username"]</h3>
+    <h3>Hello there, {{ user }}. You are in.</h3>
   {% endif %}
 </body>
 </html>
