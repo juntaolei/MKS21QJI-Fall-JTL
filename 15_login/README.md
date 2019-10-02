@@ -16,6 +16,7 @@
             v                 ^                        v
             |                 ^                        |
             |                 ^                        |
-    | /error: login failure | ^                   | /logout | 
+    | login failure  |        ^                   | /logout | 
+    | shows msg at / |        ^                        |
             v                 ^                        v     
             |>>>>>>>>>>>>>>>>>|<<<<<<<<<<<<<<<<<<<<<<<<|   

@@ -7,6 +7,9 @@
   <title>Login</title>
 </head>
 <body>
+  {% if msg %}
+  <h1>{{ msg }}</h1>
+  {% endif %}
   <form action="/login" method="GET">
     <input type="text" name="usrname">
     <input type="password" name="passwd">
