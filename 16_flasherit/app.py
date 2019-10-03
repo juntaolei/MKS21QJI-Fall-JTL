@@ -25,20 +25,14 @@ def root():
 
 # /login checks for form content to match the hardcoded usr info
 @app.route("/login", methods = ["GET"])
-def login():
-  msg = ""
+def login(msg = ""):
   if request.args:
-    # Checks for all inputs to be filled
-    if len(request.args["usrname"]) == 0 or len(request.args["passwd"]) == 0:
+    if not bool(request.args["usrname"]) or not bool(request.args["passwd"]): # Checks for all inputs to be filled
       msg = "Fill in all the information correctly!"
-    # Bad username
-    elif request.args["usrname"] != usr:
-      msg = "Bad Username!"
-    # Bad password
-    elif request.args["passwd"] != passwd:
-      msg = "Bad Password!"
-    # authenticated successfully
     else:
+      msg = ["","Bad Username! "][request.args["usrname"] != usr] # Checks for bad username
+      msg += ["","Bad Password!"][request.args["passwd"] != passwd] # Checks for bad password
+    if not bool(msg): # authenticated successfully
       session["usr"] = request.args["usrname"]
       return redirect(url_for("welcome"))
   return render_template("login.html", msg = msg)
@@ -46,7 +40,9 @@ def login():
 # /welcome renders a template that greets the usr
 @app.route("/welcome")
 def welcome():
-  return render_template("welcome.html", usrname = session["usr"])
+  if "usr" in session:
+    return render_template("welcome.html", usrname = session["usr"])
+  return redirect("/")
 
 # /logout ends the session and redirects to /
 @app.route("/logout")

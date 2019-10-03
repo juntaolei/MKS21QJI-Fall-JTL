@@ -1,4 +1,13 @@
-<!DOCTYPE html>
-<html lang="en">
 {% extends "base.html" %}
-</html>
+{% block title %}Login{% endblock %}
+{% block body %}
+<h1>Login</h1>
+{% if msg %}
+<h3>{{ msg }}</h3>
+{% endif %}
+<form action="/login" method="GET">
+  <input type="text" name="usrname" placeholder="Enter your username...">
+  <input type="password" name="passwd" placeholder="Enter your password...">
+  <input type="submit">
+</form>
+{% endblock %}

@@ -1,23 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
+{% block header %}
 <head>
-  {% block header %}
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Blorbby Blorb</title>
-  {% endblock %}
+  <title>Team Blorb - {% block title %}{% endblock %}</title>
 </head>
+{% endblock %}
 <body>
+  <content>
   {% block body %}
-  <main>
-    Blorbby Blorbby Blorb
-  </main>
   {% endblock %}
-  {% block footer %}
+  </content>
   <footer>
-    Team Blorb @ 2019
+    {% block footer %}
+    <h4>Team Blorb &copy; 2019</h4>
+    {% endblock %}
   </footer>
-  {% endblock %}
 </body>
 </html>
