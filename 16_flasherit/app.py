@@ -1,7 +1,7 @@
-# Leia Park & Jun Tao Lei
+# Team Blorb: Leia Park & Jun Tao Lei
 # SoftDev1 pd9
-# K#15 -- Do I Know You?
-# 2019-10-02
+# K#16 -- Do I Know You Again?
+# 2019-10-03
 
 from flask import Flask, session, redirect, url_for, render_template, request
 from os import urandom
