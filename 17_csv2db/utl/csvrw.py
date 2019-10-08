@@ -1,8 +1,9 @@
 from csv import DictReader
+from re import search
 
 # Creates a table if it does not exist
 def create(tbl_name, headers, db):
-  tbl_headers = " (" + ",".join("{0} BLOB".format(i) for i in headers) + ")"
+  tbl_headers = " (" + ",".join("{0} BLOB".format(header) for header in headers) + ")"
   db.execute("CREATE TABLE IF NOT EXISTS " + tbl_name + tbl_headers)
 
 # Add all entries from csv into a table
@@ -12,7 +13,7 @@ def insertAll(file, tbl_name, db):
   for row in f:
     field = " VALUES("
     for value in row.values():
-      if any(i.isdigit() for i in value):
+      if bool(search("^[+-]?([0-9]+([.][0-9]*)?|[.][0-9]+)$", value)):
         field += value + ","
       else: field += '"{0}"'.format(value) + ","
     db.execute("INSERT INTO " + tbl_name + field[:-1] + ")")
