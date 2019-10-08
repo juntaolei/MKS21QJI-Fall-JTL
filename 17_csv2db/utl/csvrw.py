@@ -11,12 +11,16 @@ def insertAll(file, tbl_name, db):
   f = DictReader(open(file))
   create(tbl_name, f.fieldnames, db)
   for row in f:
-    field = " VALUES("
-    for value in row.values():
-      if bool(search("^[+-]?([0-9]+([.][0-9]*)?|[.][0-9]+)$", value)):
-        field += value + ","
-      else: field += '"{0}"'.format(value) + ","
-    db.execute("INSERT INTO " + tbl_name + field[:-1] + ")")
+    insert(row.values(), tbl_name, db)
+
+# Insert one row into a table
+def insert(values, tbl_name, db):
+  field = " VALUES("
+  for value in values:
+    if bool(search("^[+-]?([0-9]+([.][0-9]*)?|[.][0-9]+)$", value)):
+      field += value + ","
+    else: field += '"{0}"'.format(value) + ","
+  db.execute("INSERT INTO " + tbl_name + field[:-1] + ")")
 
 # print the value of a table
 def printTable(tbl_name, cur):
