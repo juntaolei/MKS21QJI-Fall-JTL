@@ -11,7 +11,7 @@ DB_FILE="school.db"
 db = sqlite3.connect(DB_FILE) #open if file exists, otherwise create
 c = db.cursor()               #facilitate db ops
 
-with open('students.csv', newline='') as file1:
+with open('data/students.csv', newline='') as file1:
     studentsCSV = csv.DictReader(file1) #DictReader object
     # each row is a dictionary
     command = "CREATE TABLE students (Name TEXT, Age INTEGER, ID INTEGER);"
@@ -25,7 +25,7 @@ with open('students.csv', newline='') as file1:
     for item in commands: #run each command
         c.execute(item)
 
-with open('courses.csv', newline='') as file2:
+with open('data/courses.csv', newline='') as file2:
     coursesCSV = csv.DictReader(file2)
     command = "CREATE TABLE courses (Code TEXT, Mark INTEGER, ID INTEGER);"
     c.execute(command)
