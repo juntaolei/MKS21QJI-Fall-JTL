@@ -1,40 +1,51 @@
-# Jun Tao Lei & Kenneth Chin (Regular Chairs)
-# SoftDev1 pd9
-# K#17 - No Trouble
-# 2019-10-07
+#RazzleDazzle: Grace Mao, Leia Park
+#SoftDev1 pd9
+#K17: No Trouble
+#2019-10-9
 
-from sqlite3 import connect
-from utl.csvrw import insertAll, printTable
+import sqlite3   #enable control of an sqlite database
+import csv       #facilitate CSV I/O
 
-# Setup the database
-DB_FILE = "discobandit.db"
+DB_FILE="school.db"
 
-db = connect(DB_FILE)
-c = db.cursor()
+db = sqlite3.connect(DB_FILE) #open if file exists, otherwise create
+c = db.cursor()               #facilitate db ops
 
-# Add the csv and create a table to store the csv if it does not exist
-insertAll("data/courses.csv", "courses", db)
-insertAll("data/students.csv", "students", db)
+with open('students.csv', newline='') as file1:
+    studentsCSV = csv.DictReader(file1) #DictReader object
+    # each row is a dictionary
+    command = "CREATE TABLE students (Name TEXT, Age INTEGER, ID INTEGER);"
+    c.execute(command)
+    commands = list()
+    for row in studentsCSV:
+        #print(row['name'])
+        newCommand = "INSERT INTO students VALUES ('{}', {}, {});".format(row['name'], row['age'], row['id'])
+        #print(newCommand)
+        commands.append(newCommand) #add all commands to a list
+    for item in commands: #run each command
+        c.execute(item)
 
-q = """
-  SELECT name, students.id, mark
-  FROM students, courses
-  WHERE students.id = courses.id;
-"""
+with open('courses.csv', newline='') as file2:
+    coursesCSV = csv.DictReader(file2)
+    command = "CREATE TABLE courses (Code TEXT, Mark INTEGER, ID INTEGER);"
+    c.execute(command)
+    commands = list()
+    for row in coursesCSV:
+        #print(row['name'])
+        newCommand = "INSERT INTO courses VALUES ('{}', {}, {});".format(row['code'], row['mark'], row['id'])
+        #print(newCommand)
+        commands.append(newCommand) #add all commands to a list
+    for item in commands: #run each command
+        c.execute(item)
 
-foo = db.execute(q)
+#used to check work
+#command1 = "SELECT * FROM students;"
+#command2 = "SELECT * FROM courses;"
+#c.execute(command1)
+#c.execute(command2)
+#rows = c.fetchall()
+#for row in rows:
+#    print(row)
 
-print(isinstance(foo.fetchall(), dict))
-
-for row in foo.fetchall():
-  print(dict(row))
-
-# Print the database
-print("courses table")
-printTable("courses", db)
-print("\nstudents table")
-printTable("students", db)
-
-# Save and exit the database
-db.commit()
-db.close()
+db.commit() #save changes
+db.close()  #close database

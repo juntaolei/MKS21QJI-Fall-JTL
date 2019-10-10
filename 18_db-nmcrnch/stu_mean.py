@@ -1,47 +1,49 @@
-from sqlite3 import connect
-from utl.csvrw import create, insert, printTable
-from utl.dict_factory import dict_factory
+#Jun tao Lei, Grace Mao, Sophie Nichol
+#SoftDev1 pd9
+#K18: Average
+#2019-10-11
 
-# Calculate the average
-def average(cur):
-  sums = {} # Get sum
-  times = {} # Get num of appearances
-  for row in cur:
-    times[str(row["id"])] = times.get(str(row["id"]), 0) + 1 # Increment the value of that id by 1
-    sums[str(row["id"])] = sums.get(str(row["id"]), 0) + row["mark"] # Add the mark to the value of that id
-  return {i: sums[i] / times[i] for i in sums} # Return the average
+import sqlite3   #enable control of an sqlite database
+import csv       #facilitate CSV I/O
 
-DB_FILE = "discobandit.db"
+DB_FILE="school.db"
 
-db = connect(DB_FILE)
-db.row_factory = dict_factory
-c = db.cursor()
+db = sqlite3.connect(DB_FILE) #open if file exists, otherwise create
+c = db.cursor()               #facilitate db ops
 
-# Query for the students and their marks
-query = """
-  SELECT name, students.id, mark
-  FROM students, courses
-  WHERE students.id = courses.id;
-"""
 
-# Display student name, id, and mark
-for row in db.execute(query):
-  print(row)
+# calculates and displays the average of each student (STEP 2)
+command = """
+            SELECT name, students.id, SUM(mark) / COUNT(mark) FROM courses, students
+            WHERE courses.id = students.id
+            GROUP BY students.id;
+          """
 
-# Create a table of id and average named stu_avg
-create("stu_avg", ["id", "average"], db)
+# creates new table stu_avg (STEP 4)
+command1 = """
+            CREATE TABLE stu_avg ( id INTEGER, average INTEGER );
+           """
 
-# Get a dictionary of averages corresponding to id keys
-avgs = average(db.execute(query))
+c.execute(command1) #command1 executed first for fetchall purposes
+c.execute(command)
 
-# Add each average and its corresponding id into table
-for stu in avgs:
-  insert([stu, avgs[stu]], "stu_avg", db)
+# creating a list of the rows in the result of command
+rows = c.fetchall()
+#print(type(rows)) --> rows is a list
+for row in rows:
+    # insert the id, average into stu_avg for each student
+    newCommand = "INSERT INTO stu_avg VALUES ({}, {})".format(row[1], row[2])
+    c.execute(newCommand)
+    #print(row)
 
-# Print the stu_avg table
-print("\nstu_avg table")
-printTable("stu_avg", db)
+### USED TO TEST INSERTION OF VALUES
+#command2 = """
+#            SELECT * FROM stu_avg;
+#           """
+#c.execute(command2)
+#r2 = c.fetchall()
+#for r in r2:
+#    print(r)
 
-# Save and exit the database
-db.commit()
-db.close()
+db.commit() #save changes
+db.close()  #close database
