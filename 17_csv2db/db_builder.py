@@ -1,4 +1,4 @@
-# Jun Tao Lei
+# Jun Tao Lei & Kenneth Chin (Regular Chair)
 # SoftDev1 pd9
 # K#17 - No Trouble
 # 2019-10-07
