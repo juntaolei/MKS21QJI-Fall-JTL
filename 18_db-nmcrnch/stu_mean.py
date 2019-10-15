@@ -1,4 +1,4 @@
-#Jun tao Lei, Grace Mao, Sophie Nichol
+#Zebras: Jun tao Lei, Grace Mao, Sophie Nichol
 #SoftDev1 pd9
 #K18: Average
 #2019-10-11
@@ -19,6 +19,22 @@ command = """
             GROUP BY students.id;
           """
 
+# facilitate adding rows to courses (STEP 5)
+print("To stop adding courses, press ENTER")
+add = True;
+while (add):
+    code = input("Course code: ")
+    if (code == ""):
+        add = False
+    else:
+        mark = input("Course mark: ")
+        id = input("ID: ")
+        #print(type(code))
+        commandAdd = """
+                        INSERT INTO courses VALUES ( '{}', {}, {} );
+                     """.format(code, mark, id)
+        c.execute(commandAdd)
+
 # creates new table stu_avg (STEP 4)
 command1 = """
             CREATE TABLE stu_avg ( id INTEGER, average INTEGER );
@@ -30,9 +46,8 @@ c.execute(command)
 # creating a list of the rows in the result of command
 rows = c.fetchall()
 #print(type(rows)) --> rows is a list
-print("name|id|avg")
 for row in rows:
-    print("%s|%d|%f" % (row[0], row[1], row[2]))
+    print("{}, {}: {}".format(row[0], row[1], row[2]))
     # insert the id, average into stu_avg for each student
     newCommand = "INSERT INTO stu_avg VALUES ({}, {})".format(row[1], row[2])
     c.execute(newCommand)
