@@ -1,5 +1,6 @@
 from csv import DictReader
 from re import search
+from numbers import Number
 
 # Creates a table if it does not exist
 def create(tbl_name, headers, db):
@@ -17,7 +18,7 @@ def insertAll(file, tbl_name, db):
 def insert(values, tbl_name, db):
   field = " VALUES("
   for value in values:
-    if bool(search("^[+-]?([0-9]+([.][0-9]*)?|[.][0-9]+)$", value)):
+    if isinstance(value, Number) or bool(search("^[+-]?([0-9]+([.][0-9]*)?|[.][0-9]+)$", value)):
       field += value + ","
     else: field += '"{0}"'.format(value) + ","
   db.execute("INSERT INTO " + tbl_name + field[:-1] + ")")
