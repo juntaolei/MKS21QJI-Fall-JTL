@@ -1,0 +1,37 @@
+body {
+    margin: 0;
+    display: grid;
+    color: #383833;
+    grid-template: 
+        "head head" 0.125fr
+        "sidebar main" 0.75fr
+        "footer footer" 0.125fr
+        / 0.25fr 0.75fr;
+}
+
+.head {
+    grid-area: head;
+    background-color: #a9a9a9;
+    color: #ffffff;
+}
+
+.sidebar {
+    grid-area: sidebar;
+    background-color: #505050;
+}
+
+.sidebar li {
+    color: #c0c0c0;
+}
+
+.main {
+    grid-area: main;
+    background-color: #505050;
+}
+
+.footer {
+    grid-area: footer;
+    color: #404040;
+    background-color: #282828;
+    text-align: right;
+}
