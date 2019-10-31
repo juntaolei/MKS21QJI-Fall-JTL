@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<style>
+    body {
+        display: grid;
+        height: 98vh;
+        background-color: #383833;
+        grid-template:
+            "head head"0.1fr "side main"0.80fr "foot foot"0.1fr / 0.15fr 0.85fr;
+    }
+
+    .head {
+        grid-area: head;
+        background-color: #a9a9a9;
+        color: #ffffff;
+        text-align: center;
+    }
+
+    .side {
+        grid-area: side;
+        background-color: #505050;
+        margin: 0;
+        padding: 0 1vw;
+    }
+
+    .side ul {
+        list-style: none;
+        padding: 0;
+    }
+
+    .side ul li a {
+        color: #c0c0c0;
+        text-decoration: none;
+    }
+
+    .main {
+        grid-area: main;
+        background-color: #505050;
+        padding: 0 1vw;
+    }
+
+    .foot {
+        grid-area: foot;
+        color: #808080;
+        background-color: #404040;
+        text-align: right;
+        padding: 1vh 1vw;
+    }
+</style>
+
+<head>
+    <meta charset="utf-8" />
+    <title>foo title</title>
+</head>
+
+<body>
+    <div class="head">
+        <h1>foo heading 1</h1>
+    </div>
+    <div class="side">
+        <h3>nav foo</h3>
+        <ul>
+            <li><a href="">dis</a></li>
+            <li><a href="">dat</a></li>
+            <li><a href="">de udda ting</a></li>
+        </ul>
+    </div>
+    <div class="main">
+        <h2>main foo heading</h2>
+        <p>
+            Bacon ipsum dolor amet shankle boudin venison meatball buffalo, ground round corned beef drumstick salami.
+            Bresaola
+            flank strip steak, meatloaf t-bone ball tip bacon landjaeger beef filet mignon corned beef boudin sausage.
+            Ribeye
+            tri-tip turkey beef spare ribs, sausage meatloaf meatball pastrami venison cupim filet mignon. Pig kielbasa
+            ground round
+            biltong pork loin. Sirloin spare ribs cow ham beef ribs, capicola bacon t-bone tongue hamburger sausage beef
+            venison
+            leberkas boudin. Brisket bresaola capicola, ham hock doner cupim swine t-bone. Sirloin jowl prosciutto rump
+            beef turkey
+            short loin.
+        </p>
+        <p>
+            Bacon leberkas ribeye pastrami turducken tongue doner picanha strip steak beef ribs venison biltong. Ham
+            jowl swine
+            shank. Pork belly salami andouille short loin. Ribeye short loin beef ribs, buffalo cow jerky pig spare ribs
+            kielbasa
+            picanha.
+        </p>
+    </div>
+    <div class="foot">
+        Lorem Ipsum By Bacon Ipsum
+        <br>
+        Copyright &copy; 2019 ... a person
+    </div>
+</body>
+
+</html>
