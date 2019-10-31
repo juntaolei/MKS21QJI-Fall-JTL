@@ -1,11 +1,12 @@
 body {
     margin: 0;
+    width: 100%;
     display: grid;
     color: #383833;
     grid-template: 
         "head head" 0.125fr
-        "sidebar main" 0.75fr
-        "footer footer" 0.125fr
+        "side main" 0.75fr
+        "foot foot" 0.125fr
         / 0.25fr 0.75fr;
 }
 
@@ -15,12 +16,12 @@ body {
     color: #ffffff;
 }
 
-.sidebar {
+.side {
     grid-area: sidebar;
     background-color: #505050;
 }
 
-.sidebar li {
+.side li {
     color: #c0c0c0;
 }
 
@@ -29,7 +30,7 @@ body {
     background-color: #505050;
 }
 
-.footer {
+.foot {
     grid-area: footer;
     color: #404040;
     background-color: #282828;
