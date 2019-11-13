@@ -10,9 +10,15 @@
 
 <body>
     <h3>{{ title }}</h3>
+    {% if pic %}
     <img src="{{ pic }}" alt="">
+    {% endif %}
+    {% if date %}
     <h4>Astronomy Picture of the Day -- {{ date }}</h4>
+    {% endif %}
+    {% if explanation %}
     <p>{{ explanation }}</p>
+    {% endif %}
 </body>
 
 </html>
