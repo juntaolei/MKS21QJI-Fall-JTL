@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block content %}
+<table>
+    <h3> Characters in Rick and Morty</h3>
+    <tr>
+        <th>Character Name</th>
+        <th>Character Status </th>
+        <th>Character Species </th>
+    </tr>
+    {% for character in characters %}
+    <tr>
+        <td>{{character['name']}} </td>
+        <td>{{character['status']}} </td>
+        <td>{{character['species']}}</td>
+    </tr>
+    {% endfor %}
+</table>
+{% endblock %}

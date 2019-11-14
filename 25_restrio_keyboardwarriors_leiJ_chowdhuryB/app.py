@@ -29,9 +29,10 @@ def ricknmorty():
         "https://rickandmortyapi.com/api/character"
     )
     res = req.read()
-    data = loads(res)
+    data = loads(res)['results']
     return render_template(
-        "ricknmorty.html"
+        "ricknmorty.html",
+        characters=data
     )
 
 
@@ -56,7 +57,7 @@ def collegescorecard():
         print("REPLACE YOUR_API_KEY WITH AN ACTUAL API KEY")
         return render_template(
             "collegescorecard.html",
-            school="REPLACE YOUR_API_KEY WITH AN ACTUAL API KEY"
+            school="REPLACE YOUR_API_KEY WITH AN ACTUAL API KEY. SHOULD NOT PUSH API KEY TO GITHUB"
         )
 
 
