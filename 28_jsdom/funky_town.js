@@ -29,11 +29,11 @@ const randomStudent = (n) => {
 };
 
 const gcdWrapped = (n) => {
-  let [a, b] = n.split(",").map(i => i.trim());
+  let [a, b] = n.split(",");
   return gcd(a, b);
 };
 
-const randStudentWrapped = (n) => { return randomStudent(n.split(",").map(i => i.trim())) };
+const randStudentWrapped = (n) => { return randomStudent(n.split(",")); };
 
 const attachButton = (ele, req, res, fxn) => {
   document.getElementById(ele).addEventListener(
@@ -42,7 +42,7 @@ const attachButton = (ele, req, res, fxn) => {
       document.getElementById(res).innerHTML =
         `Result: ${fxn(document.getElementById(req).value)}`;
     }
-  )
+  );
 };
 
 attachButton("factgo", "facterm", "factout", factorial);
