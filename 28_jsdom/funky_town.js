@@ -4,7 +4,7 @@
 // 2019-12-11
 
 const foo = () => {
-  console.log("diagnostic info here")
+  console.log("diagnostic info here");
 };
 
 const factorial = (n) => {
@@ -29,11 +29,11 @@ const randomStudent = (n) => {
 };
 
 const gcdWrapped = (n) => {
-  let [a, b] = n.split(",");
+  let [a, b] = n.split(",").map(i => i.trim());
   return gcd(a, b);
 };
 
-const randStudentWrapped = (n) => { return randomStudent(n.split(",")); };
+const randStudentWrapped = (n) => { return randomStudent(n.split(",").map(i => i.trim())); };
 
 const attachButton = (ele, req, res, fxn) => {
   document.getElementById(ele).addEventListener(
