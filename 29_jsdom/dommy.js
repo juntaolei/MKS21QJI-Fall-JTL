@@ -46,7 +46,10 @@ const fibonacci = (n, m = thefiblist) => {
 
 const addFib = (e) => {
   // console.log(e);
-  return fib(e);
+  let thethefiblist = document.getElementById("fiblist");
+  let item = document.createElement("li");
+  item.innerHTML = fib(current++);
+  thethefiblist.appendChild(item);
 };
 
 const addFib2 = (e) => {
