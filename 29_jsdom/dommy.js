@@ -1,13 +1,10 @@
 let fibsequence = [0, 1], current = 0;
 
-const lis = document.getElementsByTagName("li");
-const lis2 = document.getElementById("fiblist");
-
 const changeHeading = e => { document.getElementById("h").innerHTML = e; };
 
 const removeItem = e => { e.remove(); };
 
-Array.from(lis).forEach(
+Array.from(document.getElementsByTagName("li")).forEach(
   i => {
     i.addEventListener("mouseover", () => changeHeading(i.innerHTML));
     i.addEventListener("mouseout", () => changeHeading("Hello World!"));
