@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <style>
+    button {
+      margin: 5px;
+    }
+
+    #canvas {
+      border: 1px solid #000;
+      margin: 5px;
+    }
+  </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Click 'n Draw</title>
+</head>
+
+<body>
+  <div>
+    <div>
+      <button type="button" id="clear">Clear Canvas</button>
+      <button type="button" id="switch">Switch to Draw-a-Dot Mode</button>
+    </div>
+    <canvas id="canvas" width="600" height="600"></canvas>
+    <div>
+      <h3>Instructions: </h3>
+      <p>
+        Draw a rectangle or a circle dot by holding the mouse down within the canvas, drag it across the canvas, and
+        release the mouse button. Make sure you release the mouse button within the canvas border.
+      </p>
+    </div>
+  </div>
+  <script type="text/javascript" src="clickdraw.js"></script>
+</body>
+
+</html>
