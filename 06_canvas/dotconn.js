@@ -27,17 +27,16 @@ canvas.addEventListener(
 		e.preventDefault();
 		if (!dotDrawn) {
 			dotDrawn = true;
-			originalDotX = e.offsetX;
-			originalDotY = e.offsetY;
 			drawDot(e);
 		} else {
-			dotDrawn = false;
 			drawDot(e);
 			ctx.beginPath();
 			ctx.moveTo(e.offsetX, e.offsetY);
 			ctx.lineTo(originalDotX, originalDotY);
 			ctx.stroke();
 		}
+		originalDotX = e.offsetX;
+		originalDotY = e.offsetY;
 	}
 )
 
