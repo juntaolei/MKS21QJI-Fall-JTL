@@ -25,8 +25,11 @@ document.getElementById('start').addEventListener(
 document.getElementById('dvd').addEventListener(
 	'click',
 	_ => {
+		x = Math.floor(Math.random() * (canvas.width - 60));
+		y = Math.floor(Math.random() * (canvas.height - 40));
 		bounce_dvd();
 	}
+
 );
 
 document.getElementById('stop').addEventListener(
