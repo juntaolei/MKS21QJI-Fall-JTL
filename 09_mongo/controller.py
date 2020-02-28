@@ -1,60 +1,57 @@
-import bson
-import ingest
-import pymongo
+from ingest import ingest
+from itertools import chain
+from pymongo import MongoClient
 
-# utils
-pprint = lambda data: type(data)
 
 # functions to for handling init
-init_client = lambda uri: pymongo.MongoClient(uri)
+init_client = lambda uri = '': MongoClient(uri)
 
 init_db = lambda client, database_name: client[database_name]
+
 
 # insertion functions
 insert_restaurants_by_borough = lambda db, f: list(
         map(
-            lambda r: db[r['borough']].insert_one(dict(r)),
-            ingest.ingest(f)
+            lambda r: db[r['borough']].insert_one(r),
+            ingest(f)
         )
     )
+
 
 # query functions
-get_all_by_borough = lambda borough, collection: list(
-        map(lambda i: dict(i), collection.find())
+get_all_by_borough = lambda db, borough: list(
+        db[borough].find()
     )
 
-get_all_by_zipcode = lambda zipcode, db: filter(
-        None,
-        list(
+get_all_by_zipcode = lambda db, zipcode: list( 
+        chain.from_iterable(
             map(
                 lambda c: list(
-                    map(lambda i: dict(i), db[c].find({"address.zipcode": zipcode}))
+                    db[c].find({"address.zipcode": zipcode})
                 ),
-                ['Bronx', 'Brooklyn', 'Manhattan', 'Staten Island', 'Missing', 'Queens']
+                db.collection_names()
             )
         )
     )
 
-get_all_by_zipcode_and_grade = lambda zipcode, grade, db: filter(
-        None,
-        list(
+get_all_by_zipcode_and_grade = lambda db, zipcode, grade: list(
+        chain.from_iterable(
             map(
                 lambda c: list(
-                    map(lambda i: dict(i), db[c].find({"address.zipcode": zipcode, "grades.0.grade": grade}))
+                    db[c].find({"address.zipcode": zipcode, "grades.0.grade": grade})
                 ),
-                ['Bronx', 'Brooklyn', 'Manhattan', 'Staten Island', 'Missing', 'Queens']
+                db.collection_names()
             )
         )
     )
 
-get_all_by_zipcode_and_score = lambda zipcode, score, db: filter(
-        None,
-        list(
+get_all_by_zipcode_and_score = lambda db, zipcode, score: list(
+        chain.from_iterable(
             map(
                 lambda c: list(
-                    map(lambda i: dict(i), db[c].find({"address.zipcode": zipcode, "grades.0.score": {"$lt": int(score)}}))
+                    db[c].find({"address.zipcode": zipcode, "grades.0.score": {"$lt": int(score)}})
                 ),
-                ['Bronx', 'Brooklyn', 'Manhattan', 'Staten Islan', 'Missing', 'Queens']
+                db.collection_names()
             )
         )
     )
