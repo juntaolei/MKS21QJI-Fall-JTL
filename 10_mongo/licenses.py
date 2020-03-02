@@ -16,7 +16,9 @@ find_by_identifier = lambda database, identifier: list(
 find_by_keyword = lambda database, keyword: list(
   database['license'].find({
     'keywords': {
-      '$elemMatch': keyword
+      '$elemMatch': {
+        '$eq': keyword
+      }
     }
   })
 )
