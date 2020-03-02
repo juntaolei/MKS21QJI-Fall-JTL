@@ -8,7 +8,7 @@ find_by_identifier = lambda database, identifier: list(
   database['license'].find({
     'identifiers': {
       '$elemMatch': {
-        { "identifier": identifier }
+        "identifier": identifier
       }
     }
   })
