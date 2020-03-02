@@ -1,3 +1,4 @@
+from pprint import pprint
 from pymongo import MongoClient
 from bson.json_util import loads
 
@@ -14,4 +15,10 @@ init_database = lambda client, database_name: client[database_name]
 
 
 # functions to insert data
-insert_data = lambda database, file: database['license'].insert_many(ingest(f))
+insert_data = lambda database, f: database['license'].insert_many(ingest(f))
+
+
+# util functions
+def print_results(results):
+  for result in results:
+    pprint(result)

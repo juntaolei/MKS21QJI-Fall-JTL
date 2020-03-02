@@ -1,7 +1,8 @@
 from mongo import (
   init_client,
   init_database,
-  insert_data
+  insert_data,
+  print_results
 )
 from licenses import (
   find_by_name,
@@ -20,4 +21,21 @@ insert_data(database, 'opensoftware-licenses.json')
 
 
 # test queries...
-# TBD
+print_results(
+  find_by_name(
+    database,
+    'GNU General Public License, Version 3.0'
+  )
+)
+print_results(
+  find_by_identifier(
+    database,
+    'MIT'
+  )
+)
+print_results(
+  find_by_keyword(
+    database,
+    'copyleft'
+  )
+)
