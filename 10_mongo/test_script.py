@@ -18,7 +18,8 @@ from licenses import (
   find_by_identifier,
   find_by_keyword,
   find_by_keywords,
-  find_by_filter
+  find_by_filter,
+  find_by_scheme
 )
 
 
@@ -60,5 +61,11 @@ print_results(
   find_by_filter(
     database,
     'obsolete'
+  )
+)
+print_results(
+  find_by_scheme(
+    database,
+    'Trove'
   )
 )
