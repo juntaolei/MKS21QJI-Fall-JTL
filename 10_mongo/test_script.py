@@ -8,6 +8,8 @@ from licenses import (
   find_by_name,
   find_by_identifier,
   find_by_keyword
+  find_by_keywords,
+  find_by_filter
 )
 
 
@@ -37,5 +39,17 @@ print_results(
   find_by_keyword(
     database,
     'copyleft'
+  )
+)
+print_results(
+  find_by_keyword(
+    database,
+    ['osi-approved', 'popular']
+  )
+)
+print_results(
+  find_by_filter(
+    database,
+    'obsolete'
   )
 )

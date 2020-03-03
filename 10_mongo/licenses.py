@@ -7,14 +7,16 @@ find_by_identifier = lambda database, identifier: list(
     'identifiers': { '$elemMatch': { "identifier": identifier } }
   })
 )
+find_by_keyword = lambda database, keyword: list(
+  database['license'].find({
+    'keywords': { '$elemMatch': { '$eq': keyword } }
+  })
+)
 find_by_keywords = lambda database, keywords: list(
-  chain.from_iterable(filter(None, list(map(
-          lambda keyword: list(
-            database['license'].find({
-              'keywords': { '$elemMatch': { '$eq': keyword } }
-            })
-          ), keywords
-        )))))
+  database['license'].find({
+    'keywords': { '$in': keywords }
+  })
+)
 find_by_filter = lambda database, _filter: list(
   database['license'].find({
     'keywords:': { '$nin': [_filter] }
