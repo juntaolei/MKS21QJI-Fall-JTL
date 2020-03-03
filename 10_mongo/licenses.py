@@ -1,6 +1,8 @@
 # functions to query data
 find_by_name = lambda database, name: list(
-  database['license'].find({'name': name})
+  database['license'].find({
+    '$or': [ { 'name': name }, { 'id': name } ]
+  })
 )
 find_by_identifier = lambda database, identifier: list(
   database['license'].find({
