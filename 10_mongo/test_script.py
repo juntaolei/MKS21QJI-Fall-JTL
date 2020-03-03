@@ -6,6 +6,9 @@
 # Dataset: Opensource Licenses
 # Desc: A collection of all opensource software licenses found in opensource.org.
 # Rawdata: https://api.opensource.org/licenses/
+# --------------------------------------------------------------------------------------
+# insert_data takes in a mongodb database created by the mongo connection
+#   and inserts a bson object (after the file is read) into a collection called license.
 
 from mongo import (
   init_client,
