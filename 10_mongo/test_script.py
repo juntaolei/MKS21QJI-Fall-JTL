@@ -7,7 +7,7 @@ from mongo import (
 from licenses import (
   find_by_name,
   find_by_identifier,
-  find_by_keyword
+  find_by_keyword,
   find_by_keywords,
   find_by_filter
 )
