@@ -1,3 +1,12 @@
+# Jun Tao Lei
+# SoftDev pd9
+# K10 -- Opensource Licenses with MongoDB
+# 2020-03-03
+
+# Dataset: Opensource Licenses
+# Desc: A collection of all opensource software licenses found in opensource.org.
+# Rawdata: https://api.opensource.org/licenses/
+
 from mongo import (
   init_client,
   init_database,

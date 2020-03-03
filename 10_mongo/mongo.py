@@ -15,6 +15,9 @@ init_database = lambda client, database_name: client[database_name]
 
 
 # functions to insert data
+# ------------------------
+# insert_data takes in a mongodb database created by the mongo connection
+#   and inserts a bson object (after the file is read) into a collection called license.
 insert_data = lambda database, f: database['license'].insert_many(ingest(f))
 
 
