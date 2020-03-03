@@ -24,6 +24,6 @@ find_by_filter = lambda database, _filter: list(
 )
 find_by_scheme = lambda database, scheme: list(
   database['license'].find({
-    'identifiers': { '$eleMatch': { 'scheme': scheme } }
+    'identifiers': { '$elemMatch': { 'scheme': scheme } }
   })
 )
