@@ -1,11 +1,13 @@
-{% extends "base.thml" %}
+{% extends "base.html" %}
 
 {% block title %}Query Thy Datasets{% endblock %}
 
 {% block content %}
 <form action="/query">
-  <input type="radio" name="selectQueryType" value="Meteorites">
-  <input type="radio" name="selectQueryType" value="Licenses">
+  <input type="radio" id="meteorites" name="selectQueryType" value="meteorites">
+  <label for="meteorites">Meteorites</label>
+  <input type="radio" id="licenses" name="selectQueryType" value="licenses">
+  <label for="licenses">Licenses</label>
   <input type="text" name="searchQuery" value="Type thy query...">
   <input type="submit" value="Search">
 </form>

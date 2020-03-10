@@ -15,13 +15,13 @@ app = Flask(__name__)
 
 
 with app.app_context():
-  g['client'] = init_client('mongodb://localhost:27017/')
+  g.client = init_client('mongodb://localhost:27017/')
 
-  g['licenses'] = init_database(g['client'], 'licenses')
-  g['meteorites'] = init_database(g['client'], 'meteorites')
+  g.licenses = init_database(g.client, 'licenses')
+  g.meteorites = init_database(g.client, 'meteorites')
 
-  insert_data(g['licenses']['opensource'], 'opensoftware-licenses.json')
-  insert_data(g['meteorites']['earth_landings'], 'meteorites.json')
+  insert_data(g.licenses['opensource'], 'opensoftware-licenses.json')
+  insert_data(g.meteorites['earth_landings'], 'meteorites.json')
 
 
 @app.route('/')
@@ -33,8 +33,7 @@ def index():
 def query():
   query_type = request.args['selectQueryType']
   raw_query = request.args['searchQuery']
-  print(query_type)
-  print(raw_query)
+  return 'done'
 
 
 if __name__ == '__main__':
