@@ -1,6 +1,8 @@
 from flask import (
   g,
-  Flask
+  Flask,
+  render_template,
+  request
 )
 from mongo import (
   init_client,
@@ -24,7 +26,16 @@ with app.app_context():
 
 @app.route('/')
 def index():
-  return 'Hello, world!'
+  return render_template('index.html')
+
+
+@app.route('/query')
+def query():
+  query_type = request.args['selectQueryType']
+  raw_query = request.args['searchQuery']
+  print(query_type)
+  print(raw_query)
 
 
 if __name__ == '__main__':
+  app.run(debug=True)

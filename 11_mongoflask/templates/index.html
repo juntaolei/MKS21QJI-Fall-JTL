@@ -1,0 +1,18 @@
+{% extends "base.thml" %}
+
+{% block title %}Query Thy Datasets{% endblock %}
+
+{% block content %}
+<form action="/query">
+  <input type="radio" name="selectQueryType" value="Meteorites">
+  <input type="radio" name="selectQueryType" value="Licenses">
+  <input type="text" name="searchQuery" value="Type thy query...">
+  <input type="submit" value="Search">
+</form>
+
+<div>
+  <h6>Instructions</h6>
+  <p>Search Format: {Your Query} {Your Constraint}</p>
+  <p>Example: filter::copyleft</p>
+</div>
+{% endblock %}
