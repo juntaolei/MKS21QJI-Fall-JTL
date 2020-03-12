@@ -51,8 +51,8 @@ def disconnect(Exception):
 with app.app_context():
   connect()
 
-  insert_data(g.licenses, 'license', '/var/www/app/opensoftware-licenses.json')
-  insert_data(g.meteorites, 'earth_landings', '/var/www/app/meteorites.json')
+  insert_data(g.licenses, 'license', 'opensoftware-licenses.json')
+  insert_data(g.meteorites, 'earth_landings', 'meteorites.json')
 
   disconnect(None)
 
