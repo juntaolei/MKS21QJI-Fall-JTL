@@ -15,7 +15,7 @@ init_database = lambda client, database_name: client[database_name]
 
 
 # functions to insert data
-insert_data = lambda database, f: database['license'].insert_many(ingest(f))
+insert_data = lambda database, collection, f: database[collection].insert_many(ingest(f))
 
 
 # util functions
