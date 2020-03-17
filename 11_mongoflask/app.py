@@ -1,4 +1,8 @@
-from os import environ
+# Jun Tao Lei
+# SoftDev pd9
+# K11 -- MongoPi
+# 2020-03-16
+
 from flask import (
   g,
   Flask,
@@ -25,9 +29,11 @@ app = Flask(__name__)
 
 @app.before_request
 def connect():
-  g.client = init_client(environ.get('MONGO_URI'))
+  g.client = init_client('mongodb://localhost:27017/')
 
   g.licenses = init_database(g.client, 'licenses')
+
+  # Partner does not have their part of the code from the last assignment for meteorites...
   g.meteorites = init_database(g.client, 'meteorites')
 
   g.licenses_queries = {
