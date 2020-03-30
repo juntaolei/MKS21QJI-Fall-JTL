@@ -1,0 +1,194 @@
+<!doctype html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Haskell - A Quick Presentation</title>
+</head>
+
+<body>
+  <h1>Haskell</h1>
+  <hr>
+  <h5>A Quick Presentation</h5>
+  <ul>
+    <li>Jun Tao Lei</li>
+    <li>Jackson Zou</li>
+  </ul>
+
+  <hr>
+
+  <h1>What is Haskell?</h1>
+  <hr>
+  <blockquote>
+    Haskell is a general-purpose, statically typed, purely functional programming language with type inference and lazy
+    evaluation. - Wikipedia
+  </blockquote>
+
+  <hr>
+
+  <h1>Imperative Programming Language vs Functional Language</h1>
+  <table>
+    <tr>
+      <th>Imperative Programming Language</th>
+      <th>Functional Language</th>
+    </tr>
+    <tr>
+      <td>C, Python, Java</td>
+      <td>Haskell, ML, OCaml</td>
+    </tr>
+    <tr>
+      <td>Give tasks for the computer to execute</td>
+      <td>Tell computer what something is</td>
+    </tr>
+    <tr>
+      <td>Uses states to keep track of values</td>
+      <td>Stateless</td>
+    </tr>
+    <tr>
+      <td>For/While loops</td>
+      <td>Recursion</td>
+    </tr>
+  </table>
+
+  <hr>
+
+  <h1>Less is More in Haskell</h1>
+  <hr>
+  <ul>
+    <li>Shorter, cleaner, and more expressive code with function annotation</li>
+    <li>Smaller semantic gap as its syntax is more succinct</li>
+    <li>Fewer errors as Haskell is compiled and have decent error message</li>
+    <li>Lazy: won't compute unless absolutely necessary</li>
+  </ul>
+
+  <hr>
+
+  <h1>A Short Crashcourse</h1>
+  <hr>
+  <code>
+    -- return in haskell does not end a function <br>
+    it is used in another way that will be shown later <br>
+    giveMax a b = if a > b then a else b <br>
+    <br>
+    -- defining data type <br>
+    data List a = Empty | Entry a (List a) <br>
+    <br>
+    -- expressive functions <br>
+    colored :: Color -> Circle -> Circle <br>
+    circle = colored blue (Circle 2) <br>
+  </code>
+
+  <hr>
+
+  <h1>Function Currying</h1>
+  <hr>
+  <p>
+    Currying is the process of transforming a function that takes multiple arguments in a tuple as its argument and
+    unpacking it to become an individual function.
+  </p>
+  <code>
+    f :: a -> (b -> c) <br>
+    -- (which can also be written as f :: a -> b -> c ) <br>
+  </code>
+
+  <hr>
+
+  <h1>Laziness</h1>
+  <hr>
+  <code>
+    badSum :: Num a => [a] -> a <br>
+    badSum [] = 0 <br>
+    badSum (x:xs) = x + badSum xs <br>
+  </code>
+  <br>
+  <code>
+    lazySum :: Num a => [a] -> a <br>
+    lazySum = go 0 <br>
+    where go acc [] = acc <br>
+    go acc (x:xs) = go (x + acc) xs <br>
+  </code>
+  <br>
+  <code>
+    strictSum :: Num a => [a] -> a <br>
+    strictSum = go 0 <br>
+    where go acc [] = acc <br>
+    go acc (x:xs) = acc `seq` go (x + acc) xs <br>
+  </code>
+
+  <hr>
+
+  <h1>A Basic Example</h1>
+  <hr>
+  <code>
+    fibonacci :: [Integer] <br>
+    fibonacci = 1 : 1 : (zipWith (+) fibonacci (tail fibonacci)) <br>
+    <br>
+    compute :: Integer <br>
+    compute = sum [ x | x &lt;- takeWhile (&lt;=1000000) fibonacci, even x] <br>
+  </code>
+  <br>
+  <code>
+    python def compute(): <br>
+      ans, x, y=0, 1, 2 <br>
+      while x &lt;=4000000: <br>
+        if x % 2==0: <br>
+          ans +=x x, y=y, x + y <br>
+      return str(ans) <br>
+  </code>
+
+  <hr>
+
+  <h1>Monads</h1>
+  <hr>
+  <p>
+    A type class that amplifies an existing data type to deal with operations with side effects Uses the bind operation
+    (>>=) and return operation
+  </p>
+  <code>
+    (>>=) :: m a -> (a -> m b) -> m b <br>
+    return :: a -> m a <br>
+  </code>
+  <br>
+  <code>
+    --Example <br>
+    data Maybe a = Just a | Nothing <br>
+    return x = Just x <br>
+    Just x >>= f = f x <br>
+    Nothing >>= f = f x <br>
+  </code>
+
+  <hr>
+
+  <h1>Cabal and Stack</h1>
+  <hr>
+  <ul>
+    <li>Cabal is the preinstalled package manager for Haskell.</li>
+    <li>Stack extends on Cabal with extra functionalities and has its own Stackage repository.</li>
+    <li>The pain point with both tools is that they recompile all the downloaded/requested packages. However, it is possible to download container images with prebuilt binaries.</li>
+  </ul>
+
+  <hr>
+
+  <h1>Haskell Web Frameworks</h1>
+  <hr>
+  <ul>
+    <li>Yesod: Useful for building MVC web application</li>
+    <li>Servant: Useful for building API service</li>
+    <li>Scotty: Lightweight web framework like Flask</li>
+    <li>and more...</li>
+  </ul>
+
+  <hr>
+
+  <h1>Relevant Links and Sources</h1>
+  <hr>
+  <ul>
+    <li>Haskell Wiki</li>
+    <li>UPenn CIS 194: Introduction to Haskell (Fall 2016)</li>
+    <li>Wikipedia</li>
+    <li>And possibly more...</li>
+  </ul>
+</body>
+
+</html>
