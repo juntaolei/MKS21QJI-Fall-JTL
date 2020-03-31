@@ -1,15 +1,6 @@
-let drawn = false;
-
-const btn = document.getElementById('btn');
+let id, dr = 1, circlev = [];
 const svg = document.getElementById('svg-dot');
-
-const clear = _ => {
-  let fc = svg.firstChild;
-  while (fc) {
-    svg.removeChild(fc);
-    fc = svg.firstChild;
-  }
-};
+const colors = ['red', 'green', 'blue', 'lightred', 'lightgreen', 'lightblue', 'yellow', 'lightyellow', 'purple'];
 
 const drawCircle = (cx, cy, r, color) => {
   const circle = document.createElementNS(
@@ -20,6 +11,7 @@ const drawCircle = (cx, cy, r, color) => {
   circle.setAttribute('r', r);
   circle.setAttribute('fill', color);
   circle.addEventListener('click', recolor);
+  circlev.push([2, 3]);
   svg.appendChild(circle);
 };
 
@@ -39,7 +31,51 @@ const destroy = e => {
   e.stopImmediatePropagation();
 };
 
-btn.addEventListener(
+const moveCircles = _ => {
+  circles = document.getElementsByTagNameNS(
+    'http://www.w3.org/2000/svg', 'circle'
+  );
+  [...circles].forEach(
+    (circle, index) => {
+      const cx = parseInt(circle.getAttribute('cx'));
+      const cy = parseInt(circle.getAttribute('cy'));
+      if (cy + circlev[index][1] >= 590 || cy + circlev[index][1] <= 0) {
+        circlev[index][1] *= -1;
+      } else if (cx + circlev[index][0] >= 590 || cx + circlev[index][0] <= 0) {
+        circlev[index][0] *= -1;
+      }
+      circle.setAttribute('cx', cx + circlev[index][0]);
+      circle.setAttribute('cy', cy + circlev[index][1]);
+    }
+  );
+}
+
+const move = _ => {
+  moveCircles();
+  id = window.requestAnimationFrame(move);
+}
+
+const xtra = _ => {
+  circles = document.getElementsByTagNameNS(
+    'http://www.w3.org/2000/svg', 'circle'
+  );
+  [...circles].forEach(
+    circle => {
+      let r = parseInt(circle.getAttribute('r'));
+      if (r >= 50 || r <= 0) {
+        dr *= -1;
+      }
+      circle.setAttribute('r', r + dr);
+      if (r % 10 == 0) {
+        circle.setAttribute('fill', colors[Math.floor(Math.random() * colors.length)]);
+      }
+    }
+  );
+  moveCircles();
+  id = window.requestAnimationFrame(xtra);
+}
+
+document.getElementById('clear').addEventListener(
   'click',
   _ => {
     while (svg.hasChildNodes()) {
@@ -47,6 +83,29 @@ btn.addEventListener(
     }
   }
 );
+
+document.getElementById('move').addEventListener(
+  'click',
+  _ => {
+    window.cancelAnimationFrame(id);
+    id = window.requestAnimationFrame(move);
+  }
+)
+
+document.getElementById('stop').addEventListener(
+  'click',
+  _ => {
+    id = window.cancelAnimationFrame(id);
+  }
+)
+
+document.getElementById('xtra').addEventListener(
+  'click',
+  _ => {
+    window.cancelAnimationFrame(id);
+    id = window.requestAnimationFrame(xtra);
+  }
+)
 
 svg.addEventListener(
   'click',
