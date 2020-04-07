@@ -1,0 +1,14 @@
+Jun Tao Lei
+SoftDev pd9
+K17 -- Deeper in D3
+2020-04-07
+
+Notes
+-----
+
+* d3 functions can be chained.
+* Calling node on d3 selections can return html element.
+* Calling data on d3 selection associates the data with the selection.
+* Calling join on d3 selection creates HTML elements based on data.
+* Charts can be created by import the chart from another js module.
+* Charts can be modified by associating it with the data used in charts with as keyword.
