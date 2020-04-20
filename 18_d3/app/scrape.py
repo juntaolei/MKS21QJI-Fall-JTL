@@ -6,21 +6,29 @@ from bs4 import BeautifulSoup
 
 def scrape(static_dir):
     website_url = get(
-        'https://en.wikipedia.org/wiki/Template:2019-20_coronavirus_pandemic_data').text
+        'https://en.wikipedia.org/wiki/2020_coronavirus_pandemic_in_the_United_States').text
     soup = BeautifulSoup(website_url, 'lxml')
-    table = [['Countries and territories', 'Cases', 'Deaths', 'Recoveries']]
+    table = [['U.S. state or territory', 'Cases',
+              'Deaths', 'Recoveries', 'Hospitalizations']]
 
-    for data in soup.find('table', {'class': 'wikitable'}).findAll('tr', attrs={'class': None}):
-        if data:
-            country = [a.string for a in data.findAll(
+    for data in soup.find('div', {'id': 'covid19-container'}).findAll('tr', attrs={'class': None}):
+        if data.findAll('th', attrs={'scope': 'row'}):
+            state = [a.string for a in data.findAll(
                 'a', attrs={'title': True})]
-            country += [int(float(re.findall('\d+\n', str(td))[0].strip()))
-                        for td in list(data.findAll('td')) if re.findall('\d+\n', str(td))]
-            if len(country) < len(table[0]) and len(country) != 0:
-                country += '-'
-            if country:
-                table.append(country)
+            for td in list(data.findAll('td')):
+                if re.search('\d+\n', str(td)):
+                    try:
+                        state += [int(float(re.sub('<.*?>', '',
+                                                   str(td)).strip().replace(',', '')))]
+                    except:
+                        pass
+            while len(state) < len(table[0]) and len(state) != 0:
+                state += '-'
+            if state:
+                table.append(state)
 
     with open(f'{static_dir}/covid19.csv', 'w', newline='') as f:
         wr = csv.writer(f, quoting=csv.QUOTE_NONNUMERIC)
         wr.writerows(table)
+
+    return table
