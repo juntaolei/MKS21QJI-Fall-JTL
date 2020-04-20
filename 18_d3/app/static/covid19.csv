@@ -1,0 +1,225 @@
+"Countries and territories","Cases","Deaths","Recoveries"
+"United States",876,80,429
+"Spain",210,852,587
+"Italy",228,114,877
+"Germany",398,706,438
+"United Kingdom",743,509
+"France",657,265,409
+"Turkey",980,140,430
+"Iran",505,209,273
+"China",747,632,84
+"Russia",121,405,446
+"Belgium",983,828,895
+"Brazil",681,512,130
+"Canada",671,681,498
+"Netherlands",405,751
+"Switzerland",673,429,600
+"Portugal",863,735,610
+"India",656,559,842
+"Peru",325,445,968
+"Ireland",652,687
+"Sweden",777,580,550
+"Austria",775,470,631
+"Israel",713,177,49
+"Japan",751,171,239
+"South Korea",674,236,114
+"Chile",507,139,676
+"Saudi Arabia",484,103,490
+"Ecuador",128,507,150
+"Poland",593,380,133
+"Romania",936,451,17
+"Pakistan",418,176,970
+"Mexico",261,686,627
+"Singapore",14,11,801
+"Denmark",515,364,312
+"United Arab Emirates",265,43,360
+"Norway",127,181
+"Czech Republic",838,194,559
+"Indonesia",760,590,747
+"Serbia",630,125,870
+"Australia",619,71,258
+"Philippines",459,428,613
+"Belarus",264,51,514
+"Qatar",15,9,555
+"Ukraine",710,151,359
+"Malaysia",425,89,295
+"Dominican Republic",964,235,416
+"Panama",467,126,165
+"Finland",868,94,700
+"Colombia",792,179,711
+"Luxembourg",558,75,637
+"Egypt",333,250,821
+"South Africa",300,58,55
+"Morocco",46,143,350
+"Bangladesh",948,101,85
+"Argentina",941,136,7737
+"Thailand",792,47,999
+"Algeria",718,384,1099
+"Moldova",548,68,478
+"Greece",245,116,269
+"Kuwait",995,9,367
+"Hungary",984,199,267
+"Bahrain",907,7,773
+"Croatia",871,47,709
+"Kazakhstan",852,19,447
+"Iceland",773,10,362
+"Uzbekistan",627,5,261
+"Iraq",574,82
+"Estonia",535,40,165
+"Azerbaijan",436,19,791
+"Oman",410,7,238
+"Armenia",339,22,580
+"Slovenia",335,77,193
+"Lithuania",326,37,242
+"Bosnia & Herzegovina",309,49,381
+"North Macedonia",225,54,200
+"Puerto Rico",213,62
+"Slovakia",173,13,251
+"New Zealand",105,12,974
+"Cuba",87,36,285
+"Ghana",42,9,99
+"Afghanistan",26,33,131
+"Hong Kong",26,4,602
+"Cameroon",17,42,305
+"Bulgaria",929,43,167
+"Tunisia",879,38,43
+"Ivory Coast",847,9,260
+"Djibouti",846,2,102
+"Cyprus",772,12,81
+"Latvia",739,5,88
+"Andorra",717,36,248
+"Lebanon",677,21,102
+"Costa Rica",660,5,112
+"Niger",648,20,117
+"Nigeria",627,21,170
+"Albania",584,26,327
+"Burkina Faso",581,38,357
+"Guinea",579,5,87
+"Kyrgyzstan",568,7,201
+"Bolivia",564,33,31
+"Kosovo",561,12,102
+"Uruguay",528,10,298
+"Honduras",477,46,25
+"San Marino",462,39,61
+"Palestine",449,3,70
+"Malta",431,3,126
+"Jordan",425,7,282
+"Taiwan",422,6,203
+"Réunion",408,0,237
+"Georgia",402,4,95
+"Senegal",377,5,235
+"DR Congo",332,25,27
+"Mauritius",328,9,208
+"Montenegro",312,5,88
+"Sri Lanka",304,7,9
+"Isle of Man",300,9,200
+"Guatemala",289,7,22
+"Mayotte",284,4,117
+"Kenya",281,14,69
+"Vietnam",268,0,214
+"Venezuela",256,9,117
+"Tanzania",254,10,11
+"Jersey",249,12
+"Guernsey",239,10,112
+"Mali",224,14,42
+"El Salvador",218,7,46
+"Paraguay",208,8,46
+"Jamaica",196,5,27
+"Faroe Islands",185,0,176
+"Somalia",164,7,3
+"Martinique",163,12,73
+"Republic of the Congo",160,6,16
+"Guadeloupe",148,8,73
+"Rwanda",147,0,76
+"Brunei",138,1,115
+"Guam",136,5,97
+"Gibraltar",132,0,120
+"Cambodia",122,0,107
+"Madagascar",121,0,39
+"Trinidad & Tobago",114,8,22
+"Ethiopia",111,3,16
+"Myanmar",119,5,7
+"Gabon",109,1,7
+"Northern Cyprus",108,3,52
+"Liberia",99,8,7
+"Aruba",97,2,51
+"French Guiana",97,1,69
+"Monaco",94,3,22
+"Sudan",92,12,8
+"Bermuda",86,5,35
+"Togo",84,6,53
+"Liechtenstein",81,1,55
+"Equatorial Guinea",79,0,4
+"Barbados",75,5,23
+"Cape Verde",67,1,1
+"Maldives",67,0,16
+"Sint Maarten",67,10,12
+"Guyana",65,7,9
+"Zambia",65,3,35
+"Cayman Islands",61,1,7
+"Bahamas",60,9,11
+"French Polynesia",55,0,19
+"Uganda",55,0,38
+"Benin",54,1,27
+"U.S. Virgin Islands",53,3,48
+"Libya",51,1,11
+"Guinea-Bissau",50,0,3
+"Haiti",47,3,0
+"Macau",45,0,22
+"Sierra Leone",43,0,6
+"Eritrea",39,0,3
+"Mozambique",39,0,4
+"Syria",39,3,5
+"Saint Martin",37,2,19
+"Donetsk PR",36,0,2
+"Chad",33,0,8
+"Mongolia",33,0,7
+"Nepal",31,0,4
+"Zimbabwe",25,3,2
+"Angola",24,2,6
+"Eswatini",24,1,8
+"Antigua & Barbuda",23,3,0
+"East Timor",22,0,1
+"Luhansk PR",21,0,1
+"Botswana",20,1,0
+"Laos",19,0,2
+"Belize",18,2,0
+"Fiji",18,0,3
+"New Caledonia",18,0,14
+"Malawi",17,2,3
+"Dominica",16,0,8
+"Namibia",16,0,6
+"Saint Kitts & Nevis",15,0,0
+"Saint Lucia",15,0,0
+"Curaçao",14,1,11
+"Grenada",14,0,0
+"Northern Mariana Islands ",14,2,9
+"Central African Republic",12,0,4
+"Saint Vincent",12,0,1
+"Falkland Islands",11,0,4
+"Greenland",11,0,11
+"Montserrat",11,0,2
+"Seychelles",11,0,5
+"Turks & Caicos Islands",11,1,0
+"Gambia",10,1,2
+"Nicaragua",10,2,6
+"Suriname",10,1,6
+"Vatican City",8,0,2
+"Artsakh",7,0,0
+"Mauritania",7,1,2
+"Papua New Guinea",7,0,0
+"Saint Barthélemy",6,0,1
+"Bhutan",5,0,2
+"Burundi",5,1,0
+"Somaliland",5,0,0
+"British Virgin Islands",4,1,2
+"São Tomé & Príncipe",4,0,0
+"South Sudan",4,0,0
+"Abkhazia",3,0,0
+"Anguilla",3,0,1
+"Saba",2,0,0
+"Sint Eustatius",2,0,0
+"Bonaire",1,0,0
+"Guantanamo Bay",1,0
+"Saint Pierre & Miquelon",1,0,0
+"Yemen",1,0,0
