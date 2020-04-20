@@ -1,9 +1,10 @@
 "Countries and territories","Cases","Deaths","Recoveries"
+"-"
 "United States",876,80,429
 "Spain",210,852,587
 "Italy",228,114,877
 "Germany",398,706,438
-"United Kingdom",743,509
+"United Kingdom",743,509,"-"
 "France",657,265,409
 "Turkey",980,140,430
 "Iran",505,209,273
@@ -12,12 +13,12 @@
 "Belgium",983,828,895
 "Brazil",681,512,130
 "Canada",671,681,498
-"Netherlands",405,751
+"Netherlands",405,751,"-"
 "Switzerland",673,429,600
 "Portugal",863,735,610
 "India",656,559,842
 "Peru",325,445,968
-"Ireland",652,687
+"Ireland",652,687,"-"
 "Sweden",777,580,550
 "Austria",775,470,631
 "Israel",713,177,49
@@ -33,7 +34,7 @@
 "Singapore",14,11,801
 "Denmark",515,364,312
 "United Arab Emirates",265,43,360
-"Norway",127,181
+"Norway",127,181,"-"
 "Czech Republic",838,194,559
 "Indonesia",760,590,747
 "Serbia",630,125,870
@@ -64,7 +65,7 @@
 "Kazakhstan",852,19,447
 "Iceland",773,10,362
 "Uzbekistan",627,5,261
-"Iraq",574,82
+"Iraq",574,82,"-"
 "Estonia",535,40,165
 "Azerbaijan",436,19,791
 "Oman",410,7,238
@@ -73,7 +74,7 @@
 "Lithuania",326,37,242
 "Bosnia & Herzegovina",309,49,381
 "North Macedonia",225,54,200
-"Puerto Rico",213,62
+"Puerto Rico",213,62,"-"
 "Slovakia",173,13,251
 "New Zealand",105,12,974
 "Cuba",87,36,285
@@ -119,7 +120,7 @@
 "Vietnam",268,0,214
 "Venezuela",256,9,117
 "Tanzania",254,10,11
-"Jersey",249,12
+"Jersey",249,12,"-"
 "Guernsey",239,10,112
 "Mali",224,14,42
 "El Salvador",218,7,46
@@ -220,6 +221,6 @@
 "Saba",2,0,0
 "Sint Eustatius",2,0,0
 "Bonaire",1,0,0
-"Guantanamo Bay",1,0
+"Guantanamo Bay",1,0,"-"
 "Saint Pierre & Miquelon",1,0,0
 "Yemen",1,0,0
