@@ -16,7 +16,7 @@ def scrape(static_dir):
                 'a', attrs={'title': True})]
             country += [int(float(re.findall('\d+\n', str(td))[0].strip()))
                         for td in list(data.findAll('td')) if re.findall('\d+\n', str(td))]
-            if len(country) < len(table[0]):
+            if len(country) < len(table[0]) and len(country) != 0:
                 country += '-'
             if country:
                 table.append(country)
