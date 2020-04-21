@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>COVID19 -- United States</title>
+</head>
+
+<body>
+  <div id="app">
+    <chart v-bind:covid="{ covid }"></chart>
+  </div>
+  <script src="https://d3js.org/d3.v5.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.6.11"></script>
+  <script>
+    const vm = new Vue({
+      el: "#app",
+      data: {
+        covid: []
+      },
+      methods: {
+        fetchData() {
+          fetch("/data")
+            .then(res => res.json())
+            .then(res => this.covid = res)
+            .catch(err => console.log(err))
+        }
+      },
+      mounted() {
+        this.fetchData();
+      }
+    });
+    const chart = Vue.component(
+      "chart",
+      {
+        props: {
+          covid: Array,
+        },
+        template: `
+          <div>
+            <h3>Covid19 Cases in the United States</h3>
+            <div id="bar"></div>
+          </div>
+        `,
+        methods: {
+          makeBarChart() {
+            const x = d3.scaleBand()
+              .domain(this.covid.covid.map(({ ["U.S. state or territory"]: Place }) => Place))
+              .rangeRound([40, 500])
+              .padding(0.1);
+
+            const y = d3.scaleLinear()
+              .domain([0, d3.max(this.covid.covid.map(({ Cases }) => parseInt(Cases)), d => d)])
+              .range([270, 20]);
+
+            const svg = d3.create("svg")
+              .attr("width", "550")
+              .attr("height", "400");
+
+            svg.append("g")
+              .attr("fill", "steelblue")
+              .selectAll("rect")
+              .data(this.covid.covid)
+              .join("rect")
+              .attr("transform", "translate(10,0)")
+              .attr("x", ({ ["U.S. state or territory"]: Place }) => x(Place))
+              .attr("y", ({ Cases }) => y(Cases))
+              .attr("height", ({ Cases }) => y(0) - y(Cases))
+              .attr("width", x.bandwidth());
+
+            svg.append("g")
+              .attr("transform", "translate(10, 270)")
+              .call(d3.axisBottom(x))
+              .selectAll("text")
+              .style("text-anchor", "end")
+              .attr("dx", "-.8em")
+              .attr("dy", ".15em")
+              .attr("transform", "rotate(-65)")
+              .attr("font-size", "xx-smaller");
+
+            svg.append("g")
+              .attr("transform", "translate(50,0)")
+              .call(d3.axisLeft(y));
+
+            d3.selectAll("#bar").insert(() => svg.node());
+          }
+        },
+        mounted() {
+          this.makeBarChart()
+        }
+      }
+    );
+  </script>
+</body>
+
+</html>
