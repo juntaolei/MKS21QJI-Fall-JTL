@@ -8,7 +8,28 @@
 </head>
 
 <body>
+  <div id="chart"></div>
+  <script src="https://d3js.org/d3.v5.min.js"></script>
+  <script>
+    const makeBarChart = (data) => {
+      console.log(data)
+      const x = d3.scaleLinear()
+        .domain([0, d3.max(data.map(({ Cases }) => Cases))])
+        .range([0, 60])
+      const chart = d3.select("#chart");
+      const bar = chart.selectAll("div");
+      bar.data(data)
+        .join("div")
+        .style("background", "steelblue")
+        .style("padding", "3px")
+        .style("margin", "1px")
+        .style("width", ({ Cases }) => `${x(Cases)}px`)
+        .style("font-size", "x-small")
+        .text(({ Cases, ["U.S. state or territory"]: Place }) => `${Place} (${Cases})`);
+    }
 
+    d3.json("/data").then(data => makeBarChart(data));
+  </script>
 </body>
 
 </html>
