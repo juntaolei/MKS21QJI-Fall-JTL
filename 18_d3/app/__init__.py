@@ -28,3 +28,11 @@ def data():
         for row in reader:
             array.append(json.loads(json.dumps(row)))
     return jsonify(array)
+
+
+@app.route('/map')
+def mapr():
+    data = {}
+    with open(f'{app.static_folder}/states-albers-10m.json', 'r') as f:
+        data = json.load(f)
+    return jsonify(data)
